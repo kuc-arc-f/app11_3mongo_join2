@@ -24,17 +24,8 @@ router.get('/add',async function(req, res, next) {
         LibCsrf.set_token(req, res) 
         const bread_collection = await LibMongo.get_collection("breads" )
         var breads = await bread_collection.find({} ).toArray();
-
-        const category_collection = await LibMongo.get_collection("category" )
-        var categories = await category_collection.find({} ).toArray();
-        const tags_collection = await LibMongo.get_collection("tags" )
-        var tags = await tags_collection.find({} ).toArray();
-        const type_collection = await LibMongo.get_collection("type" )
-        var types = await type_collection.find({} ).toArray();
-
-        console.log(categories);
         res.render('bread_orders/new', { 
-            categories: categories, tags: tags, types: types,
+//            categories: categories, tags: tags, types: types,
             breads: breads
         });
     } catch (err) {
